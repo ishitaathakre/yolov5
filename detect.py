@@ -107,7 +107,7 @@ def run(
         source = check_file(source)  # download
 
     # Directories
-    save_dir = increment_path(Path(project) / name, exist_ok=exist_ok)  # increment run
+    save_dir = increment_path(Path(project), exist_ok=exist_ok)  # increment run
     (save_dir / "predictions" if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 
     # Load model
@@ -184,7 +184,7 @@ def run(
                 p, im0, frame = path, im0s.copy(), getattr(dataset, "frame", 0)
 
             p = Path(p)  # to Path
-            save_path = str(save_dir / p.name)  # im.jpg
+            save_path = str(save_dir)  # im.jpg
             txt_path = str(save_dir / "predictions" / p.stem) + ("" if dataset.mode == "image" else f"_{frame}")  # im.txt
             txt_path+="_preds"
             s += "%gx%g " % im.shape[2:]  # print string
