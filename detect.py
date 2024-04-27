@@ -107,7 +107,8 @@ def run(
         source = check_file(source)  # download
 
     # Directories
-    save_dir = increment_path(Path(project), exist_ok=exist_ok)  # increment run
+    save_dir = increment_path(Path(source).root, exist_ok=exist_ok)  # increment run
+    print(save_dir)
     (save_dir / "predictions" if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 
     # Load model
